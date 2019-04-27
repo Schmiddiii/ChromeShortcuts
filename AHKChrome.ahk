@@ -17,18 +17,19 @@ return
 !NumpadMult::
     Send, !{Right}
 return
-!NumpadAdd::
+; Refresh page
+!NumpadEnter::
     Send, {F5}
 return
-; Open new tab: Control + Num0
+; Open new tab: Ctrl + Num0
 ^Numpad0::
     Send, ^t
 return
-; Close current tab: Contol + Enter
+; Close current tab: Ctrl + Enter
 ^NumpadEnter::
     Send, ^w
 return
-; Move between tabs: Contol + / and Control + * ; Use chrome-shortcut Contol + Num to move to a specific tab
+; Move between tabs: Ctrl + / and Ctrl + * ; Use chrome-shortcut Ctrl + Num to move to a specific tab
 ^NumpadDiv::
     Send, ^+{Tab}
 return

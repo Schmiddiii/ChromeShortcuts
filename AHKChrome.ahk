@@ -4,63 +4,82 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance, force
 
-Change
+activ:=true
+
 
 #IfWinActive ahk_exe chrome.exe
-; Go to the search bar: Alt + Num0
-!Numpad0::
+:*:qq::
+    activ:=NOT activ
+return
+#If activ AND WinActive("ahk_exe chrome.exe")
+; #IfWinActive ahk_exe chrome.exe
+; Go to the search bar: gs 
+:*:gs::
     Send, {F6}
 return
-; Go back or forward in history: Alt + / and Alt + *
-!NumpadDiv::
+; Go back or forward in history: pb and pB or h and l
+:*C:pb::
     Send, !{Left}
 return
-!NumpadMult::
+:*C:pB::
     Send, !{Right}
 return
-; Refresh page
-!NumpadEnter::
+:*C:h::
+    Send, !{Left}
+return
+:*C:l::
+    Send !{Right}
+return
+; Refresh tab: pr
+:*:pr::
     Send, {F5}
 return
-; Open new tab: Ctrl + Num0
-^Numpad0::
+; Open new tab: to
+:*:to::
     Send, ^t
 return
-; Close current tab: Ctrl + Enter
-^NumpadEnter::
+; Close current tab: tc 
+:*:tc::
     Send, ^w
 return
-; Move between tabs: Ctrl + / and Ctrl + * ; Use chrome-shortcut Ctrl + Num to move to a specific tab
-^NumpadDiv::
+; Move between tabs: tf and tF 
+:*C:ts::
+    Send, ^{Tab}
+return
+:*C:tS::
     Send, ^+{Tab}
 return
-^NumpadMult::
-    Send, ^{Tab}
+
+; Move up and down: j and k
+:*C:j::
+    Send {Down}
+return
+:*C:k::
+    Send {Up}
 return
 
 ; Switch to the n-th link when searching: Win + Number
-#Numpad1::
+:*:o1::
     Send {F6}
-    SendInput javascript: document.getElementsByClassName("r")[0].firstElementChild.click(){enter}
+    SendInput jajavascript:document.getElementsByClassName("r")[0].firstElementChild.click(){enter}
 return
-#Numpad2::
+:*:o2::
     Send {F6}
-    SendInput javascript: document.getElementsByClassName("r")[1].firstElementChild.click(){enter}
+    SendInput jajavascript:document.getElementsByClassName("r")[1].firstElementChild.click(){enter}
 return
-#Numpad3::
+:*:o3::
     Send {F6}
-    SendInput javascript: document.getElementsByClassName("r")[2].firstElementChild.click(){enter}
+    SendInput jajavascript:document.getElementsByClassName("r")[2].firstElementChild.click(){enter}
 return
-#Numpad4::
+:*:o4::
     Send {F6}
-    SendInput javascript: document.getElementsByClassName("r")[3].firstElementChild.click(){enter}
+    SendInput jajavascript:document.getElementsByClassName("r")[3].firstElementChild.click(){enter}
 return
-#Numpad5::
+:*:o5::
     Send {F6}
-    SendInput javascript: document.getElementsByClassName("r")[4].firstElementChild.click(){enter}
+    SendInput jajavascript:document.getElementsByClassName("r")[4].firstElementChild.click(){enter}
 return
-#Numpad6::
+:*:o6::
     Send {F6}
-    SendInput javascript: document.getElementsByClassName("r")[5].firstElementChild.click(){enter}
+    SendInput jajavascript:document.getElementsByClassName("r")[5].firstElementChild.click(){enter}
 return
-
